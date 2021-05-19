@@ -2,9 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "main": "app.js",
-  "scripts": {
-
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC",
   "dependencies": {
