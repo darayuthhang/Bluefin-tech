@@ -31,7 +31,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(compression());
-app.use(cors({credentials: true, origin: 'http://localhost:3001'}));
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
 
 //root
