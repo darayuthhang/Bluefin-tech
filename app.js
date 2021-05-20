@@ -24,6 +24,10 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.use(cors("*"));
+app.use(cors({
+  credentials: true,
+  origin: "http://localhost:3001"
+}));
 
 //allow OPTIONS on all resources
 // app.use(function (req, res, next) {	
