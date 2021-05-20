@@ -23,11 +23,9 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
-//app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
-app.options('/the/resource/you/request', cors())
+app.use(cors("*"));
 
 //allow OPTIONS on all resources
-app.options('*', cors())
 // app.use(function (req, res, next) {	
 //     res.setHeader('Access-Control-Allow-Origin', "http://localhost:3000");    
 //     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');    
