@@ -3,6 +3,7 @@ var AWS = require('aws-sdk');
 const fs = require('fs');
 
 const s3 = new AWS.S3({
+    region: process.env.REGION,
     accessKeyId: process.env.ACCESS_KEY_ID_S3,
     secretAccessKey: process.env.SECRET_ACCESS_KEY_S3
 });

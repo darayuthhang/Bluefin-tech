@@ -130,33 +130,32 @@ const handleProfileUpload =  async (req, res) => {
     if(result) {
         image = result['Location']
     }
-    return res.status(200).json({"message": "postcreated"})
-    // const {description, title} = req.body;
-    // const { email, apiKey, password, entries, date, name} = req.cookies;
-    // let item;
+    const {description, title} = req.body;
+    const { email, apiKey, password, entries, date, name} = req.cookies;
+    let item;
    
-    // const params = {
-    //     "pk":email,
-    //     "description":description,
-    //     "sk":"#" + uuidv4(),
-    //     "name":name,
-    //     "image":image,
-    //     "apiKey":apiKey,
-    //     "password":password,
-    //     "title": title,
-    //     "entries": entries,
-    //     "date": date
-    // }
-    // item = await logic.addUploadedItemToTable(params);
+    const params = {
+        "pk":email,
+        "description":description,
+        "sk":"#" + uuidv4(),
+        "name":name,
+        "image":image,
+        "apiKey":apiKey,
+        "password":password,
+        "title": title,
+        "entries": entries,
+        "date": date
+    }
+    item = await logic.addUploadedItemToTable(params);
 
-    // if(item){
-    //      return res.status(200).json({
-    //         "message": "Post created"
-    //     })
-    // }
-    // return res.status(404).json({
-    //     "message": "data does not exist"
-    // })
+    if(item){
+         return res.status(200).json({
+            "message": "Post created 1"
+        })
+    }
+    return res.status(404).json({
+        "message": "data does not exist"
+    })
    
 }
 
