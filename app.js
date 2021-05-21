@@ -60,7 +60,7 @@ app.post("/api/profile/login", async (req, res) => {
     await profile.handleProfileLogin(req, res); 
 })
 
-app.post("/api/profile/upload",upload.single('files'), async (req, res) => {
+app.post("/api/profile/upload",requireAuth, upload.single('files'), async (req, res) => {
      await profile.handleProfileUpload(req, res);
 })
 
@@ -72,7 +72,7 @@ app.get("/api/profile/list/:id", async (req, res) => {
     await profile.handleListItems(req, res);
 })
 
-app.get("/api/profile/list",requireAuth, async (req, res) => {
+app.get("/api/profile/list", async (req, res) => {
     await profile.handleListItemWithoutApi(req, res);
 })
 //update route with image
