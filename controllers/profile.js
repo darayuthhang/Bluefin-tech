@@ -154,7 +154,7 @@ const handleProfileUpload =  async (req, res) => {
         })
     }
     return res.status(404).json({
-        "message": "data does not exist"
+        "message": "data does not exist 1"
     })
    
 }
