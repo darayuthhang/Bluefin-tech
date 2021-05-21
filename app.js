@@ -20,13 +20,21 @@ app.use(cookieParser())
 app.use(express.json());
 
 // app.set('view engine', 'ejs');
-app.use(express.urlencoded({
-  extended: true
-}));
-app.use(cors({
-  credentials: true,
-  origin: "http://localhost:3001"
-}));
+// app.use(express.urlencoded({
+//   extended: true
+// }));
+// app.use(cors({
+//   credentials: true,
+//   origin: "http://localhost:3001"
+// }));
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 //allow OPTIONS on all resources
 // app.use(function (req, res, next) {	
