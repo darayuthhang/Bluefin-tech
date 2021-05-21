@@ -60,7 +60,7 @@ app.post("/api/profile/login", async (req, res) => {
     await profile.handleProfileLogin(req, res); 
 })
 
-app.post("/api/profile/upload", requireAuth, upload.single('files'), async (req, res) => {
+app.post("/api/profile/upload",upload.single('files'), async (req, res) => {
      await profile.handleProfileUpload(req, res);
 })
 
