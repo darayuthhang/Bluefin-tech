@@ -14,8 +14,7 @@ var cookieParser = require('cookie-parser')
 
 
 
-app.set('views', './views');
-
+app.set('trust proxy', 1)
 app.use(cookieParser())
 app.use(express.json());
 
