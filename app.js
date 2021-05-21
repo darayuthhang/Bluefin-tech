@@ -71,7 +71,7 @@ app.get("/api/profile/list/:id", async (req, res) => {
     await profile.handleListItems(req, res);
 })
 
-app.get("/api/profile/list", async (req, res) => {
+app.get("/api/profile/list", requireAuth, async (req, res) => {
     await profile.handleListItemWithoutApi(req, res);
 })
 //update route with image
