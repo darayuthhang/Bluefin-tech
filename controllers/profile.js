@@ -105,7 +105,12 @@ const handleProfileLogin = async (req, res) => {
     const {email, password} = req.body;
     //fetch data by email
     let data = await logic.selectDataByEmail(email);
-    res.status(200).json(data)
+    const jsonData = {
+        "data":data,
+        "email": email,
+        "password": password
+    }
+    res.status(200).json(jsonData)
 
 }
 const handleProfileUpload =  async (req, res) => {
