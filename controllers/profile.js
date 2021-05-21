@@ -102,8 +102,10 @@ const handleProfileRegister = async (req, res) => {
 //     } 
 // }
 const handleProfileLogin = async (req, res) => {
-
-    res.status(200).json({"message": "success"})
+    const {email, password} = req.body;
+    //fetch data by email
+    let data = await logic.selectDataByEmail(email);
+    res.status(200).json(data)
 
 }
 const handleProfileUpload =  async (req, res) => {
