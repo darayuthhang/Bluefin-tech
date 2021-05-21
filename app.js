@@ -20,9 +20,9 @@ app.use(cookieParser())
 app.use(express.json());
 
 // app.set('view engine', 'ejs');
-// app.use(express.urlencoded({
-//   extended: true
-// }));
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(cors({
   credentials: true,
   origin: "http://localhost:3000"
