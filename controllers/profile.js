@@ -78,13 +78,13 @@ const handleProfileLogin = async (req, res) => {
                             maxAge: maxAge * 1000
                         }
                      
-                         res.cookie("jwt", accessToken, HTTPONLY);
-                         res.cookie("email", user["pk"], HTTPONLY);
-                         res.cookie("apiKey", user["apiKey"], HTTPONLY);
-                         res.cookie("password", user["password"], HTTPONLY)
-                         res.cookie("entries", user["entries"], HTTPONLY)
-                         res.cookie("date", user["date"], HTTPONLY)
-                         res.cookie("name", user["name"], HTTPONLY)
+                        //  res.cookie("jwt", accessToken, HTTPONLY);
+                        //  res.cookie("email", user["pk"], HTTPONLY);
+                        //  res.cookie("apiKey", user["apiKey"], HTTPONLY);
+                        //  res.cookie("password", user["password"], HTTPONLY)
+                        //  res.cookie("entries", user["entries"], HTTPONLY)
+                        //  res.cookie("date", user["date"], HTTPONLY)
+                        //  res.cookie("name", user["name"], HTTPONLY)
                          return res.status(200).json(
                              {
                                  accessToken: accessToken, message:"success", 
