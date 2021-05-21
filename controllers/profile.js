@@ -54,65 +54,65 @@ const handleProfileRegister = async (req, res) => {
    
 }
 
-// const handleProfileLogin = async (req, res) => {
-//     const {email, password} = req.body;
-//     //select email, and password from db
-//     //compare passwowrnd using hash fucntion
-    
-//     let data = await logic.selectDataByEmail(email)
-//     if(data === "undefined") {return res.status[404].json({message: "user does not exist"})};
-//      if(data["Items"] === "undefined") {return res.status[404].json({message: "user does not exist"})};
-//     if(data["Items"].length !== 0){
-//         data["Items"].forEach(async user => {
-//             const isValid = await bcrypt.compareSync(password, user["password"])
-//             console.log(isValid);
-//             if(isValid){
-//                 //3 days in second, jwt take second
-//                 const maxAge = 3 * 24 * 60 * 60;
-//                 jwt.sign({id:user.id}, process.env.TOKEN_SECRET, {expiresIn: maxAge}, (err, accessToken )=>{
-//                     if(err){
-//                          return res.status(404).json({message: "Token is expired"})
-//                     }else{
-//                         const HTTPONLY = {
-//                             httpOnly: true,
-//                             maxAge: maxAge * 1000
-//                         }
-                     
-//                         //  res.cookie("jwt", accessToken, HTTPONLY);
-//                         //  res.cookie("email", user["pk"], HTTPONLY);
-//                         //  res.cookie("apiKey", user["apiKey"], HTTPONLY);
-//                         //  res.cookie("password", user["password"], HTTPONLY)
-//                         //  res.cookie("entries", user["entries"], HTTPONLY)
-//                         //  res.cookie("date", user["date"], HTTPONLY)
-//                         //  res.cookie("name", user["name"], HTTPONLY)
-//                          return res.status(200).json(
-//                              {
-//                                  accessToken: accessToken, message:"success", 
-//                                 apiKey:user['apiKey']['apiKey'], name:user['name']
-//                             })
-//                     }
-                  
-//                 })
-//             }else{
-//                 return res.status(404).json("forbbiden")
-//             }
-//         })    
-//     }else{
-//         return res.status(404).json({"user": "User does not exist"})
-//     } 
-// }
 const handleProfileLogin = async (req, res) => {
     const {email, password} = req.body;
-    //fetch data by email
-    let data = await logic.selectDataByEmail(email);
-    const jsonData = {
-        "data":data,
-        "email": email,
-        "password": password
-    }
-    res.status(200).json(jsonData)
-
+    //select email, and password from db
+    //compare passwowrnd using hash fucntion
+    
+    let data = await logic.selectDataByEmail(email)
+    if(data === "undefined") {return res.status[404].json({message: "user does not exist"})};
+     if(data["Items"] === "undefined") {return res.status[404].json({message: "user does not exist"})};
+    if(data["Items"].length !== 0){
+        data["Items"].forEach(async user => {
+            const isValid = await bcrypt.compareSync(password, user["password"])
+            console.log(isValid);
+            if(isValid){
+                //3 days in second, jwt take second
+                const maxAge = 3 * 24 * 60 * 60;
+                jwt.sign({id:user.id}, process.env.TOKEN_SECRET, {expiresIn: maxAge}, (err, accessToken )=>{
+                    if(err){
+                         return res.status(404).json({message: "Token is expired"})
+                    }else{
+                        const HTTPONLY = {
+                            httpOnly: true,
+                            maxAge: maxAge * 1000
+                        }
+                     
+                         res.cookie("jwt", accessToken, HTTPONLY);
+                         res.cookie("email", user["pk"], HTTPONLY);
+                         res.cookie("apiKey", user["apiKey"], HTTPONLY);
+                         res.cookie("password", user["password"], HTTPONLY)
+                         res.cookie("entries", user["entries"], HTTPONLY)
+                         res.cookie("date", user["date"], HTTPONLY)
+                         res.cookie("name", user["name"], HTTPONLY)
+                         return res.status(200).json(
+                             {
+                                 accessToken: accessToken, message:"success", 
+                                apiKey:user['apiKey']['apiKey'], name:user['name']
+                            })
+                    }
+                  
+                })
+            }else{
+                return res.status(404).json("forbbiden")
+            }
+        })    
+    }else{
+        return res.status(404).json({"user": "User does not exist"})
+    } 
 }
+// const handleProfileLogin = async (req, res) => {
+//     const {email, password} = req.body;
+//     //fetch data by email
+//     let data = await logic.selectDataByEmail(email);
+//     const jsonData = {
+//         "data":data,
+//         "email": email,
+//         "password": password
+//     }
+//     res.status(200).json(jsonData)
+
+// }
 const handleProfileUpload =  async (req, res) => {
 
     //todo 

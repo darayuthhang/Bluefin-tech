@@ -105,6 +105,6 @@ app.post("/api/profile/update/password", async (req, res) => {
 ///********testing route  */
 
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log("sucess");
+app.listen(process.env.PORT || 3000, (port) => {
+    console.log(`localhost`);
 })
